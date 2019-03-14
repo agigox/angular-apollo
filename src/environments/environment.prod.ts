@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+  production: true,
+  appolo: {
+    url: 'https://angular-apollo.herokuapp.com/graphql'
+  }
 };
