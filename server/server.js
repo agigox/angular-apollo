@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("./config/mongoose");
 const graphqlHTTP = require("express-graphql");
+const path = require("path");
 const cors = require("cors");
 const db = mongoose();
 const app = express();
@@ -8,9 +9,8 @@ const app = express();
 app.use("*", cors());
 
 // Create link to Angular build directory
-var distDir = __dirname + "/dist/";
+var distDir = path.resolve(__dirname, '..') + "/dist/";
 app.use(express.static(distDir));
-
 const userSchema = require("./graphql/index").userSchema;
 app.use(
   "/graphql",
