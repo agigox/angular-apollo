@@ -1,6 +1,8 @@
-# Customers Dashboard
+# Users skillset dashboard
 
-This project is a dashboard to manage customers, it is build using **Angular** latest version and **Apollo**
+This project is a simple dashboard to manage users skills, it is build using **Angular** latest version and **Apollo**.
+It illustrates the percent of users that master each technology: React, Angular and Git by a simple diagram
+We can also create a new user by specifying his name, angular git and react levels (All fields are required)
 
 ## Adding new user
 
