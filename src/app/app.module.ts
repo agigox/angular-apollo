@@ -6,10 +6,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 // Apollo
 import { GraphQLModule } from './graphql.module';
+import { UserDetailsComponent } from './users/user-details/user-details.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
