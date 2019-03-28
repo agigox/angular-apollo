@@ -28,12 +28,13 @@ export class AppComponent implements OnInit {
    * Create User
    * @param value     Name of User
    */
-  createUser(value) {
+  createUser(value, description) {
     this.apollo
       .mutate({
         mutation: Query.addUser,
         variables: {
-          name: value
+          name: value,
+          description: description
         },
         update: (proxy, { data: { addUser } }) => {
           // Read the data from our cache for this query.

@@ -26,7 +26,11 @@
             <label for="name">User Name</label>
             <input type="text" class="form-control" name="name" placeholder="Name" [(ngModel)]="name">
           </div>
-          <button type="button" class="btn btn-default" *ngIf="!user.id" (click)="createUser(name);">Create</button>
+          <div class="form-group">
+            <label for="description">User Description</label>
+            <textarea type="text" class="form-control" name="description" placeholder="Description" [(ngModel)]="description"></textarea>
+          </div>
+          <button type="button" class="btn btn-default" *ngIf="!user.id" (click)="createUser(name,description);">Create</button>
           <button type="button" class="btn btn-default" *ngIf="user.id" (click)="updateUser(name);">Update</button>
         </form>
       </div>
