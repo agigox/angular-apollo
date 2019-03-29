@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 // Apollo
 import { GraphQLModule } from './graphql.module';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
+import { UsersService } from './users/users.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { UserDetailsComponent } from './users/user-details/user-details.componen
     FormsModule,
     ModalModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    UsersService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
