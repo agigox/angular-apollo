@@ -5,8 +5,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { EditUserComponent } from '../edit-user/edit-user.component';
 @Component({
   selector: 'app-users-list',
-  templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.css']
+  templateUrl: './users-list.component.html'
 })
 export class UsersListComponent implements OnInit {
 

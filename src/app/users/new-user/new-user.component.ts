@@ -4,8 +4,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-new-user',
-  templateUrl: './new-user.component.html',
-  styleUrls: ['./new-user.component.css']
+  templateUrl: './new-user.component.html'
 })
 export class NewUserComponent implements OnInit {
 
@@ -13,8 +12,9 @@ export class NewUserComponent implements OnInit {
 
   ngOnInit() {
   }
-  createUser(formRef) {
-    this.usersService.createUser(formRef.value).subscribe();
+  createUser(user) {
+    const {name, description} = user;
+    this.usersService.createUser(name, description).subscribe();
   }
 
   closeFirstModal() {

@@ -14,7 +14,7 @@
       <label for="description">User Description</label>
       <textarea type="text" class="form-control" name="description" placeholder="Description" ngModel></textarea>
     </div>
-    <button type="button" class="btn btn-default" (click)="createUser(formRef); formRef.reset();">Create</button>
+    <button type="button" class="btn btn-default" (click)="createUser(formRef.value); formRef.reset();">Create</button>
 
   </form>
 </div>

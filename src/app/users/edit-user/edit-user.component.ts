@@ -5,8 +5,7 @@ import User from '../../models/User';
 
 @Component({
   selector: 'app-edit-user',
-  templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.css']
+  templateUrl: './edit-user.component.html'
 })
 export class EditUserComponent {
   user: User;
@@ -15,14 +14,9 @@ export class EditUserComponent {
     public modalRef: BsModalRef
   ) {}
   updateUser() {
-    console.log(this.user);
-    this.usersService.updateUser(this.user, this.user.id).subscribe(
-      ({ data }) => {
-        this.closeFirstModal();
-      },
-      error => {
-        console.log('there was an error sending the query', error);
-      }
+    this.usersService.updateUser(this.user).subscribe(
+      () => this.closeFirstModal(),
+      (error) => console.log('there was an error sending the query', error)
     );
   }
 

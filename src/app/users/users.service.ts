@@ -19,14 +19,11 @@ export class UsersService {
     );
   }
 
-  createUser(user) {
+  createUser(name, description) {
     return this.apollo
       .mutate({
         mutation: Query.addUser,
-        variables: {
-          name: user.name,
-          description: user.description
-        },
+        variables: {name, description},
         update: (proxy, { data: { addUser } }) => {
           // Read the data from our cache for this query.
           const data: any = proxy.readQuery({ query: Query.Users });
@@ -64,15 +61,11 @@ export class UsersService {
       });
   }
 
-  updateUser(user, userId) {
+  updateUser(user) {
     return this.apollo
       .mutate({
         mutation: Query.updateUser,
-        variables: {
-          id: userId,
-          name: user.name,
-          description: user.description
-        },
+        variables: user,
         update: (proxy, { data: { updateUser } }) => {
           // Read the data from our cache for this query.
           const data: any = proxy.readQuery({ query: Query.Users });
@@ -81,7 +74,7 @@ export class UsersService {
             .map(function (x) {
               return x.id;
             })
-            .indexOf(userId);
+            .indexOf(user.id);
 
           data.users[index].name = user.name;
           data.users[index].description = user.description;
