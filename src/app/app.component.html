@@ -1,41 +1,17 @@
 <div class="container">
-  <div class="col-md-12 text-md-center text-uppercase font-weight-light border border-light rounded text-white bg-dark aa-title-block">
-    <h3>Users List List</h3>
-  </div>
+  <app-header></app-header>
   <div class="row">
     <div class="col-md-6">
       <div class="row">
         <div class="col2">
           <!-- Create New User  -->
-          <button type="button" class="btn btn-primary pull-right" (click)="openModal(template)">
+          <button type="button" class="btn btn-primary pull-right" (click)="openModal()">
             Create New User
           </button>
         </div>
       </div>
 
-      <!-- Modal Template of New User Form -->
-      <ng-template #template>
-        <div class="modal-header">
-          <h4 class="modal-title pull-left">Create New User</h4>
-          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="name">User Name</label>
-              <input type="text" class="form-control" name="name" placeholder="Name" [(ngModel)]="name">
-            </div>
-            <div class="form-group">
-              <label for="description">User Description</label>
-              <textarea type="text" class="form-control" name="description" placeholder="Description" [(ngModel)]="description"></textarea>
-            </div>
-            <button type="button" class="btn btn-default" *ngIf="!user.id" (click)="createUser(name,description);">Create</button>
-            <button type="button" class="btn btn-default" *ngIf="user.id" (click)="updateUser(name);">Update</button>
-          </form>
-        </div>
-      </ng-template>
+
 
       <!-- List of All Users  -->
       <table class="table table-bordered table-striped table-hover">
@@ -52,7 +28,7 @@
             <td>{{ user.name }}</td>
             <td>
               <!-- Show Edit User Form  -->
-              <button class="btn btn-info" (click)="showEditUserForm(user, template)">
+              <button class="btn btn-info" (click)="showEditUserForm(user)">
                 <i class="fa fa-edit"></i>
               </button>
               <!-- Remove User  -->

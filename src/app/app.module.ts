@@ -8,11 +8,15 @@ import { FormsModule } from '@angular/forms';
 import { GraphQLModule } from './graphql.module';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
 import { UsersService } from './users/users.service';
+import { HeaderComponent } from './layout/header/header.component';
+import { NewUserComponent } from './users/new-user/new-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    HeaderComponent,
+    NewUserComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +28,7 @@ import { UsersService } from './users/users.service';
   providers: [
     UsersService
   ],
+  entryComponents: [NewUserComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

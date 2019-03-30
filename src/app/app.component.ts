@@ -1,14 +1,8 @@
 import { Component, TemplateRef, OnInit } from '@angular/core';
-import { Apollo } from 'apollo-angular';
-
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { UsersService } from './users/users.service';
-
-interface User {
-  name: String;
-  description: String;
-}
+import User from './models/User';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { NewUserComponent } from './users/new-user/new-user.component';
 
 @Component({
   selector: 'app-root',
@@ -16,24 +10,14 @@ interface User {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  modalRef: BsModalRef;
   users: User[]; // List of Users
+  modalRef: BsModalRef;
   user: User;
-  name: any;
-
-  constructor(private apollo: Apollo, private modalService: BsModalService,
-    private usersService: UsersService) { }
+  constructor(private usersService: UsersService, private modalService: BsModalService) { }
 
   ngOnInit() {
     this.usersService.getUsers().subscribe(data => {
-      this.users = data.users;
-    });
-  }
-  createUser(value, description) {
-    this.usersService.createUser(value, description).subscribe(({ data }) => {
-      this.closeFirstModal(); // Close Modal
-    }, error => {
-      console.log('there was an error sending the query', error);
+      this.users = data['users'];
     });
   }
   removeUser(id) {
@@ -47,30 +31,14 @@ export class AppComponent implements OnInit {
         }
       );
   }
-  showEditUserForm(user, template) {
-    this.name = user.name;
-    this.user = user;
-    this.modalRef = this.modalService.show(template);
-  }
-  updateUser(user) {
 
-    this.usersService.updateUser(user, this.user.id)
-      .subscribe(
-        ({ data }) => {
-          this.closeFirstModal();
-        },
-        error => {
-          console.log('there was an error sending the query', error);
-        }
-      );
+  openModal() {
+    this.modalRef = this.modalService.show(NewUserComponent);
   }
-  openModal(template: TemplateRef<any>) {
-    this.name = '';
-    this.user = {};
-    this.modalRef = this.modalService.show(template);
-  }
-  closeFirstModal() {
-    this.modalRef.hide();
-    this.modalRef = null;
+
+  showEditUserForm(user) {
+    console.log(user);
+    this.user = user;
+    this.modalRef = this.modalService.show(NewUserComponent, {initialState: this.user});
   }
 }

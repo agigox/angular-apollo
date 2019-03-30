@@ -17,13 +17,13 @@ export class UsersService {
     );
   }
 
-  createUser(value, description) {
+  createUser(user) {
     return this.apollo
       .mutate({
         mutation: Query.addUser,
         variables: {
-          name: value,
-          description: description
+          name: user.name,
+          description: user.description
         },
         update: (proxy, { data: { addUser } }) => {
           // Read the data from our cache for this query.
