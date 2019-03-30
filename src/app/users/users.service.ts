@@ -2,17 +2,19 @@ import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import * as Query from '../global-query';
 import { map } from 'rxjs/operators';
+import User from '../models/User';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
   constructor(private apollo: Apollo) { }
-  getUsers() {
+  getUsers(): Observable<User[]>  {
     return this.apollo.watchQuery({
       query: Query.Users
     }).valueChanges.pipe(map(result => {
-      return result.data;
+      return (result.data as any).users;
     })
     );
   }
@@ -59,7 +61,7 @@ export class UsersService {
           // Write our data back to the cache.
           proxy.writeQuery({ query: Query.Users, data });
         }
-      })
+      });
   }
 
   updateUser(user, userId) {
@@ -68,7 +70,8 @@ export class UsersService {
         mutation: Query.updateUser,
         variables: {
           id: userId,
-          name: user
+          name: user.name,
+          description: user.description
         },
         update: (proxy, { data: { updateUser } }) => {
           // Read the data from our cache for this query.
@@ -80,12 +83,13 @@ export class UsersService {
             })
             .indexOf(userId);
 
-          data.users[index].name = user;
+          data.users[index].name = user.name;
+          data.users[index].description = user.description;
 
           // Write our data back to the cache.
           proxy.writeQuery({ query: Query.Users, data });
         }
-      })
+      });
   }
 
 }

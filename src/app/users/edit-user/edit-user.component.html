@@ -1,0 +1,19 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Create New User {{user.name}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form>
+    <div class="form-group">
+      <label for="name">User Name</label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="user.name" />
+    </div>
+    <div class="form-group">
+      <label for="description">User Description</label>
+      <textarea type="text" class="form-control" name="description" placeholder="Description" [(ngModel)]="user.description"></textarea>
+    </div>
+    <button type="button" class="btn btn-default" (click)="updateUser();">Update</button>
+  </form>
+</div>

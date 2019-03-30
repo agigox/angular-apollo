@@ -10,13 +10,17 @@ import { UserDetailsComponent } from './users/user-details/user-details.componen
 import { UsersService } from './users/users.service';
 import { HeaderComponent } from './layout/header/header.component';
 import { NewUserComponent } from './users/new-user/new-user.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
+import { UsersListComponent } from './users/users-list/users-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserDetailsComponent,
     HeaderComponent,
-    NewUserComponent
+    NewUserComponent,
+    EditUserComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,10 @@ import { NewUserComponent } from './users/new-user/new-user.component';
   providers: [
     UsersService
   ],
-  entryComponents: [NewUserComponent],
+  entryComponents: [
+    NewUserComponent,
+    EditUserComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

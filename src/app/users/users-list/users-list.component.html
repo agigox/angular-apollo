@@ -1,0 +1,26 @@
+<!-- List of All Users  -->
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th class="text-center">ID</th>
+      <th class="text-center">Name</th>
+      <th class="text-center">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users; let i = index">
+      <td>{{ i+1 }}</td>
+      <td>{{ user.name }}</td>
+      <td>
+        <!-- Show Edit User Form  -->
+        <button class="btn btn-info" (click)="showEditUserForm(user)">
+          <i class="fa fa-edit"></i>
+        </button>
+        <!-- Remove User  -->
+        <button class="btn btn-danger" (click)="removeUser(user.id)">
+          <i class="fa fa-minus"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
