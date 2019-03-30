@@ -1,5 +1,5 @@
 <!-- List of All Users  -->
-<table class="table table-bordered table-striped table-hover">
+<table class="table table-bordered table-striped table-hover aa-table-users">
   <thead>
     <tr>
       <th class="text-center">ID</th>
@@ -10,7 +10,7 @@
   <tbody>
     <tr *ngFor="let user of users; let i = index">
       <td>{{ i+1 }}</td>
-      <td>{{ user.name }}</td>
+      <td (click)="sendToParent(user);">{{ user.name }}</td>
       <td>
         <!-- Show Edit User Form  -->
         <button class="btn btn-info" (click)="showEditUserForm(user)">

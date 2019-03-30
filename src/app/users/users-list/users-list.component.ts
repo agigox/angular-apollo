@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import User from '../../models/User';
 import { UsersService } from '../users.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { EditUserComponent } from '../edit-user/edit-user.component';
 @Component({
   selector: 'app-users-list',
-  templateUrl: './users-list.component.html'
+  templateUrl: './users-list.component.html',
+  styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit {
 
   users: User[]; // List of Users
   modalRef: BsModalRef;
+
+  @Output() event: EventEmitter<User> = new EventEmitter();
   constructor(private usersService: UsersService,  private modalService: BsModalService) { }
 
   ngOnInit() {
@@ -35,6 +38,9 @@ export class UsersListComponent implements OnInit {
           console.log('there was an error sending the query', error);
         }
       );
+  }
+  sendToParent(user) {
+    this.event.emit(user);
   }
 
 }

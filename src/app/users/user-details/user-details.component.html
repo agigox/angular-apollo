@@ -1,3 +1,11 @@
+<div *ngIf="!user">
 
-  Users details here
+  click username to see details
+</div>
+
+<div *ngIf="user">
+
+    <p>User name : {{user.name}}</p>
+    <p>User description : {{user.description}}</p>
+  </div>
 

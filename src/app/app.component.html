@@ -11,10 +11,10 @@
         </div>
       </div>
 
-      <app-users-list></app-users-list>
+      <app-users-list (event)="setDataFromChild($event)"></app-users-list>
 
     </div>
 
-    <app-user-details></app-user-details>
+    <app-user-details [user]="user"></app-user-details>
   </div>
 </div>
