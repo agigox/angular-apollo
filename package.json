@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node server/server.js",
+    "nodemon": "nodemon server/server.js",
     "build": "ng build --output-path dist",
     "test": "ng test",
     "lint": "ng lint",

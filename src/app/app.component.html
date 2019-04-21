@@ -2,15 +2,11 @@
   <app-header></app-header>
   <div class="row">
     <div class="col-md-6">
-      <div class="row">
-        <div class="col2">
-          <!-- Create New User  -->
-          <button type="button" class="btn btn-primary pull-right" (click)="openModal()">
-            Create New User
-          </button>
-        </div>
-      </div>
 
+          <!-- Create New User  -->
+        <button type="button" class="btn btn-primary mb-3 mt-3" (click)="openModal()">
+            Create New User
+        </button>
       <app-users-list (event)="setDataFromChild($event)"></app-users-list>
 
     </div>
