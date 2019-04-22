@@ -38,7 +38,8 @@
     "graphql": "^14.1.1",
     "graphql-tag": "^2.5.0",
     "mongoose": "^5.4.19",
-    "ngx-bootstrap": "^2.0.0-beta.8",
+    "ng2-validation": "^4.2.0",
+    "ngx-bootstrap": "^4.0.1",
     "rxjs": "^6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "^0.8.29"

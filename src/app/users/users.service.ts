@@ -14,7 +14,7 @@ export class UsersService {
     return this.apollo.watchQuery({
       query: Query.Users
     }).valueChanges.pipe(map(result => {
-      return (result.data as any).users;
+      return (result.data as any).users_list;
     })
     );
   }

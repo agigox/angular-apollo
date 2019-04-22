@@ -15,10 +15,7 @@ const uri = environment.appolo.url;
   ]
 })
 export class GraphQLModule {
-  constructor(
-    apollo: Apollo,
-    httpLink: HttpLink
-  ) {
+  constructor(apollo: Apollo, httpLink: HttpLink) {
     // create Apollo
     apollo.create({
       link: httpLink.create({uri}),

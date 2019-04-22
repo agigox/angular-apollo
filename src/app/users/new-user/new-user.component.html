@@ -7,12 +7,48 @@
 <div class="modal-body">
   <form #formRef="ngForm">
     <div class="form-group">
-      <label for="name">User Name</label>
-      <input type="text" class="form-control" name="name" placeholder="Name" ngModel>
+      <label for="name">Name</label>
+      <input type="text" id="name" class="form-control" name="name" placeholder="Name" ngModel>
     </div>
     <div class="form-group">
-      <label for="description">User Description</label>
-      <textarea type="text" class="form-control" name="description" placeholder="Description" ngModel></textarea>
+      <label for="image_profile">Image Profile</label>
+      <input type="url" class="form-control" id="image_profile" name="image_profile" placeholder="Image Profile" ngModel>
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea type="text" class="form-control" id="description" name="description" placeholder="Description" rows="3" ngModel></textarea>
+    </div>
+    <div class="form-group">
+      <label for="age">Age</label>
+      <input type="number" id="age" class="form-control" name="age" placeholder="Age" ngModel>
+    </div>
+    <div class="form-group">
+      <label for="them_color">Theme color</label>
+      <select class="form-control" id="them_color" name="them_color" ngModel>
+        <option>Red</option>
+        <option>White</option>
+        <option>Black</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="react_score">React score</label>
+      <input type="number" class="form-control" id="react_score" name="age" placeholder="React Score" ngModel>
+    </div>
+    <div class="form-group">
+      <label for="angular_score">Angular score</label>
+      <input type="number" class="form-control" id="angular_score" name="angular_score" placeholder="Angular Score" ngModel>
+    </div>
+    <div class="form-group">
+      <label for="git_score">Git score</label>
+      <input type="number" class="form-control" id="git_score" name="git_score" placeholder="Git Score" ngModel>
+    </div>
+    <div class="form-group">
+        <label for="birth_date">Birth Date</label>
+        <input type="text" id="birth_date" name="birth_date" ngModel placeholder="Birth Date" class="form-control" bsDatepicker>
+    </div>
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" name="is_married" id="is_married" ngModel>
+      <label class="custom-control-label" for="is_married">Is Married</label>
     </div>
     <button type="button" class="btn btn-default" (click)="createUser(formRef.value); formRef.reset();">Create</button>
 

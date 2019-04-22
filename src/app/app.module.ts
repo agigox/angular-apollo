@@ -12,6 +12,9 @@ import { HeaderComponent } from './layout/header/header.component';
 import { NewUserComponent } from './users/new-user/new-user.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { UsersListComponent } from './users/users-list/users-list.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
+import { CustomFormsModule } from 'ng2-validation'
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { UsersListComponent } from './users/users-list/users-list.component';
     HttpClientModule, // provides HttpClient for HttpLink
     GraphQLModule,
     FormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    CustomFormsModule
   ],
   providers: [
     UsersService
