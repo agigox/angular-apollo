@@ -7,11 +7,23 @@
 import gql from 'graphql-tag';
 
 export const addUser = gql`
-  mutation addUser($name: String!, $description: String!) {
-    add_user(name: $name, description: $description) {
+  mutation addUser($name: String!, $image_profile: String!, $description: String,
+    $age: Int!, $theme_color: COLORS!, $react_score: Int!, $angular_score: Int!,
+    $git_score: Int!, $birth_date: String!, $is_married: Boolean!) {
+    add_user(name: $name, image_profile: $image_profile, description: $description,
+      age: $age, theme_color: $theme_color, react_score: $react_score, angular_score: $angular_score,
+      git_score: $git_score, birth_date: $birth_date, is_married: $is_married) {
       id
       name
+      image_profile
       description
+      age
+      theme_color
+      react_score
+      angular_score
+      git_score
+      birth_date
+      is_married
     }
   }`;
 

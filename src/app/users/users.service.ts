@@ -19,11 +19,14 @@ export class UsersService {
     );
   }
 
-  createUser(name, description) {
+  createUser(user: User) {
+    const { name, image_profile, description, age, theme_color , react_score,
+      angular_score, git_score, birth_date, is_married } = user;
     return this.apollo
       .mutate({
         mutation: Query.addUser,
-        variables: {name, description},
+        variables: { name, image_profile, description, age, theme_color, react_score,
+          angular_score, git_score, birth_date, is_married },
         update: (proxy, { data: { addUser } }) => {
           // Read the data from our cache for this query.
           const data: any = proxy.readQuery({ query: Query.Users });

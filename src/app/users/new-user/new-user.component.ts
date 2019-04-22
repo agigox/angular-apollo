@@ -20,17 +20,11 @@ export class NewUserComponent implements OnInit {
   ngOnInit() {
   }
   createUser(user) {
-    const {name, description} = user;
-    this.usersService.createUser(name, description).subscribe();
+    this.usersService.createUser(user).subscribe((value) => console.log(value), (error: any) => console.log(error));
   }
 
   closeFirstModal() {
     this.modalRef.hide();
     this.modalRef = null;
   }
-
-  log(name: String): void {
-    console.log(name);
-  }
-
 }
