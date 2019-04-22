@@ -4,7 +4,14 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-new-user',
-  templateUrl: './new-user.component.html'
+  templateUrl: './new-user.component.html',
+  styles: [
+    `
+    input.ng-invalid.ng-touched {
+      border-color: red;
+    }
+    `
+  ]
 })
 export class NewUserComponent implements OnInit {
 
@@ -20,6 +27,10 @@ export class NewUserComponent implements OnInit {
   closeFirstModal() {
     this.modalRef.hide();
     this.modalRef = null;
+  }
+
+  log(name: String): void {
+    console.log(name);
   }
 
 }

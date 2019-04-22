@@ -8,11 +8,27 @@
   <form #formRef="ngForm">
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" id="name" class="form-control" name="name" placeholder="Name" ngModel>
+      <input type="text" id="name" class="form-control" (change)="log(name)" name="name" placeholder="Name" #name="ngModel" ngModel required minlength="3">
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="mt-1">
+        <div *ngIf="name?.errors.required" class="alert alert-danger">
+           Name is <strong>required</strong>
+        </div>
+        <div *ngIf="name?.errors.minlength" class="alert alert-danger">
+          The minimum number of characters is <strong>3</strong>
+       </div>
+      </div>
     </div>
     <div class="form-group">
       <label for="image_profile">Image Profile</label>
-      <input type="url" class="form-control" id="image_profile" name="image_profile" placeholder="Image Profile" ngModel>
+      <input type="url" class="form-control" id="image_profile" name="image_profile" placeholder="Image Profile" ngModel required url #image_profile="ngModel">
+      <div *ngIf="image_profile.invalid && (image_profile.dirty || image_profile.touched)" class="mt-1">
+        <div *ngIf="image_profile?.errors.required" class="alert alert-danger">
+           Image profile is <strong>required</strong>
+        </div>
+        <div *ngIf="image_profile?.errors.url" class="alert alert-danger">
+          Image profile must be a valid URL
+       </div>
+      </div>
     </div>
     <div class="form-group">
       <label for="description">Description</label>
@@ -20,31 +36,85 @@
     </div>
     <div class="form-group">
       <label for="age">Age</label>
-      <input type="number" id="age" class="form-control" name="age" placeholder="Age" ngModel>
+      <input type="number" id="age" class="form-control" name="age" placeholder="Age" #age="ngModel" ngModel required [min]="18" [max]="65">
+      <div *ngIf="age.invalid && (age.dirty || age.touched)" class="mt-1">
+        <div *ngIf="age?.errors.required" class="alert alert-danger">
+          Age is <strong>required</strong>
+        </div>
+        <div *ngIf="age?.errors.min" class="alert alert-danger">
+        Age should be greater or equal <strong>18</strong>
+        </div>
+        <div *ngIf="age?.errors.max" class="alert alert-danger">
+        Age should be lower or equal <strong>65</strong>
+        </div>
+      </div>
     </div>
     <div class="form-group">
-      <label for="them_color">Theme color</label>
-      <select class="form-control" id="them_color" name="them_color" ngModel>
+      <label for="theme_color">Theme color</label>
+      <select class="form-control" id="theme_color" #theme_color="ngModel" name="theme_color" ngModel required>
         <option>Red</option>
         <option>White</option>
         <option>Black</option>
       </select>
+      <div *ngIf="theme_color.invalid && (theme_color.dirty || theme_color.touched)" class="mt-1">
+        <div *ngIf="theme_color?.errors.required" class="alert alert-danger">
+          Theme color is <strong>required</strong>
+        </div>
+      </div>
     </div>
     <div class="form-group">
       <label for="react_score">React score</label>
-      <input type="number" class="form-control" id="react_score" name="age" placeholder="React Score" ngModel>
+      <input type="number" class="form-control" id="react_score" name="react_score" placeholder="React Score" #react_score="ngModel" ngModel required [min]="0" [max]="10">
+      <div *ngIf="react_score.invalid && (react_score.dirty || react_score.touched)" class="mt-1">
+          <div *ngIf="react_score?.errors.required" class="alert alert-danger">
+            React score is <strong>required</strong>
+          </div>
+          <div *ngIf="react_score?.errors.min" class="alert alert-danger">
+          React score should be greater or equal <strong>0</strong>
+          </div>
+          <div *ngIf="react_score?.errors.max" class="alert alert-danger">
+          React score should be lower or equal <strong>10</strong>
+          </div>
+        </div>
     </div>
     <div class="form-group">
       <label for="angular_score">Angular score</label>
-      <input type="number" class="form-control" id="angular_score" name="angular_score" placeholder="Angular Score" ngModel>
+      <input type="number" class="form-control" id="angular_score" name="angular_score" placeholder="Angular Score" #angular_score="ngModel" ngModel required [min]="0" [max]="10">
+      <div *ngIf="angular_score.invalid && (angular_score.dirty || angular_score.touched)" class="mt-1">
+          <div *ngIf="angular_score?.errors.required" class="alert alert-danger">
+            Angular score is <strong>required</strong>
+          </div>
+          <div *ngIf="angular_score?.errors.min" class="alert alert-danger">
+          Angular score should be greater or equal <strong>0</strong>
+          </div>
+          <div *ngIf="angular_score?.errors.max" class="alert alert-danger">
+          Angular score should be lower or equal <strong>10</strong>
+          </div>
+        </div>
     </div>
     <div class="form-group">
       <label for="git_score">Git score</label>
-      <input type="number" class="form-control" id="git_score" name="git_score" placeholder="Git Score" ngModel>
+      <input type="number" class="form-control" id="git_score" name="git_score" placeholder="Git Score" #git_score="ngModel" ngModel required [min]="0" [max]="10">
+      <div *ngIf="git_score.invalid && (git_score.dirty || git_score.touched)" class="mt-1">
+          <div *ngIf="git_score?.errors.required" class="alert alert-danger">
+            Git score is <strong>required</strong>
+          </div>
+          <div *ngIf="git_score?.errors.min" class="alert alert-danger">
+          Git score should be greater or equal <strong>0</strong>
+          </div>
+          <div *ngIf="git_score?.errors.max" class="alert alert-danger">
+          Git score should be lower or equal <strong>10</strong>
+          </div>
+        </div>
     </div>
     <div class="form-group">
         <label for="birth_date">Birth Date</label>
-        <input type="text" id="birth_date" name="birth_date" ngModel placeholder="Birth Date" class="form-control" bsDatepicker>
+        <input type="text" id="birth_date" name="birth_date" ngModel placeholder="Birth Date" class="form-control" bsDatepicker #birth_date="ngModel" required>
+        <div *ngIf="birth_date.invalid && (birth_date.dirty || birth_date.touched)" class="mt-1">
+            <div *ngIf="birth_date?.errors.required" class="alert alert-danger">
+              Birth date is <strong>required</strong>
+            </div>
+          </div>
     </div>
     <div class="custom-control custom-checkbox">
       <input type="checkbox" class="custom-control-input" name="is_married" id="is_married" ngModel>

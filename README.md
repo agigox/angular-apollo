@@ -7,7 +7,7 @@ We can also create a new user by specifying his name, angular git and react leve
 ## Adding new user
 
 To create a new user we need the informations bellow:
-* Name (Required, minimum lenght of 3 characters)
+* Name (Required, The minimum number of characters is 3)
 * Image profile URL (the url of the image, required)
 * Description (Optional)
 * Age (A integer between 18 and 65, Required)
